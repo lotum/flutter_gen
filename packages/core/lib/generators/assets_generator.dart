@@ -381,7 +381,7 @@ String _assetGenImageClassDefinition(String packageName) {
   return '''
 
 class AssetGenImage extends AssetImage {
-  const AssetGenImage(String assetName) : super(assetName,$packageParameter);
+  const AssetGenImage(String assetName) : super(assetName$packageParameter);
   
   String get path => assetName;
 
