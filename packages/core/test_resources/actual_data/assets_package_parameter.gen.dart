@@ -29,11 +29,11 @@ class $AssetsImagesIconsGen {
 
   /// File path: assets/images/icons/dart@test.svg
   SvgGenImage get dartTest =>
-      const SvgGenImage('assets/images/icons/dart@test.svg');
+      const SvgGenImage('packages/test/assets/images/icons/dart@test.svg');
 
   /// File path: assets/images/icons/fuchsia.svg
   SvgGenImage get fuchsia =>
-      const SvgGenImage('assets/images/icons/fuchsia.svg');
+      const SvgGenImage('packages/test/assets/images/icons/fuchsia.svg');
 }
 
 class Assets {
@@ -112,6 +112,8 @@ class SvgGenImage {
     String? semanticsLabel,
     bool excludeFromSemantics = false,
     Clip clipBehavior = Clip.hardEdge,
+    bool cacheColorFilter = false,
+    SvgTheme? theme,
   }) {
     return SvgPicture.asset(
       _assetName,
@@ -130,6 +132,8 @@ class SvgGenImage {
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
       clipBehavior: clipBehavior,
+      cacheColorFilter: cacheColorFilter,
+      theme: theme,
     );
   }
 

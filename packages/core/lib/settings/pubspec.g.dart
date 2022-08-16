@@ -120,7 +120,11 @@ FlutterGenAssets _$FlutterGenAssetsFromJson(Map json) => $checkedCreate(
       ($checkedConvert) {
         $checkKeys(
           json,
-          requiredKeys: const ['enabled', 'package_parameter_enabled', 'style'],
+          requiredKeys: const [
+            'enabled',
+            'package_parameter_enabled',
+            'style'
+          ],
         );
         final val = FlutterGenAssets(
           enabled: $checkedConvert('enabled', (v) => v as bool),

@@ -109,7 +109,7 @@ $ fluttergen -c example/pubspec.yaml
 ## Configuration file
 
 [FlutterGen] generates dart files based on the key **`flutter`** and **`flutter_gen`** of [`pubspec.yaml`](https://dart.dev/tools/pub/pubspec).  
-Default configuration can be found [here](#default-configuration). 
+Default configuration can be found [here](#default-configuration).
 
 ```yaml
 # pubspec.yaml
@@ -435,6 +435,8 @@ class SvgGenImage {
     String semanticsLabel,
     bool excludeFromSemantics = false,
     Clip clipBehavior = Clip.hardEdge,
+    bool cacheColorFilter = false,
+    SvgTheme? theme,
   }) {
     return SvgPicture.asset(
       _assetName,
@@ -453,6 +455,8 @@ class SvgGenImage {
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
       clipBehavior: clipBehavior,
+      cacheColorFilter: cacheColorFilter,
+      theme: theme,
     );
   }
 
@@ -735,7 +739,7 @@ flutter_gen:
     # - snake-case
     # - dot-delimiter
     style: dot-delimiter
-    
+
   fonts:
     # Optional
     enabled: true
