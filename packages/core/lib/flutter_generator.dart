@@ -76,7 +76,8 @@ class FlutterGenerator {
     }
 
     if (flutterGen.fonts.enabled && flutter.fonts.isNotEmpty) {
-      final generated = generateFonts(formatter, flutter.fonts);
+      final generated =
+          generateFonts(formatter, flutter.fonts, flutterGen.fonts);
       final fonts =
           File(normalize(join(pubspecFile.parent.path, output, fontsName)));
       writeAsString(generated, file: fonts);
