@@ -398,12 +398,10 @@ class AssetGenImage extends AssetImage {
 
   Image image({
     Key? key,
-    AssetBundle? bundle,
     ImageFrameBuilder? frameBuilder,
     ImageErrorWidgetBuilder? errorBuilder,
     String? semanticLabel,
     bool excludeFromSemantics = false,
-    double? scale,
     double? width,
     double? height,
     Color? color,
@@ -417,18 +415,14 @@ class AssetGenImage extends AssetImage {
     bool gaplessPlayback = false,
     bool isAntiAlias = false,
     FilterQuality filterQuality = FilterQuality.low,
-    int? cacheWidth,
-    int? cacheHeight,
   }) {
     return Image(
       key: key,
       image: this,
-      bundle: bundle,
       frameBuilder: frameBuilder,
       errorBuilder: errorBuilder,
       semanticLabel: semanticLabel,
       excludeFromSemantics: excludeFromSemantics,
-      scale: scale,
       width: width,
       height: height,
       color: color,
@@ -442,8 +436,6 @@ class AssetGenImage extends AssetImage {
       gaplessPlayback: gaplessPlayback,
       isAntiAlias: isAntiAlias,
       filterQuality: filterQuality,
-      cacheWidth: cacheWidth,
-      cacheHeight: cacheHeight,
     );
   }
 
