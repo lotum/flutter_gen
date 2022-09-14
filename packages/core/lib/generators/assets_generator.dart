@@ -391,10 +391,8 @@ String _assetGenImageClassDefinition(String packageName) {
 
   return '''
 
-class AssetGenImage {
-  const AssetGenImage(this._assetName);
-
-  final String _assetName;
+class AssetGenImage extends AssetImage {
+  const AssetGenImage(String assetName) : super(assetName$packageParameter);
 
   Image image({
     Key? key,
@@ -421,9 +419,9 @@ class AssetGenImage {
     int? cacheWidth,
     int? cacheHeight,
   }) {
-    return Image.asset(
-      _assetName,
+    return Image(
       key: key,
+      image: this,
       bundle: bundle,
       frameBuilder: frameBuilder,
       errorBuilder: errorBuilder,
@@ -442,14 +440,13 @@ class AssetGenImage {
       matchTextDirection: matchTextDirection,
       gaplessPlayback: gaplessPlayback,
       isAntiAlias: isAntiAlias,
-      package: package,
       filterQuality: filterQuality,
       cacheWidth: cacheWidth,
       cacheHeight: cacheHeight,
     );
   }
 
-  String get path => _assetName;
+  String get path => assetName;
 
   String get keyName => $keyName;
 }
