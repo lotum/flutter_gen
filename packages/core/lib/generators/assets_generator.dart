@@ -385,6 +385,9 @@ class $className {
 String _assetGenImageClassDefinition(String packageName) {
   final packageParameter = packageName.isNotEmpty ? " = '$packageName'" : '';
 
+  final packageSuperParameter =
+      packageName.isNotEmpty ? ", package: '$packageName'" : '';
+
   final keyName = packageName.isEmpty
       ? '_assetName'
       : "'packages/$packageName/\$_assetName'";
@@ -392,7 +395,7 @@ String _assetGenImageClassDefinition(String packageName) {
   return '''
 
 class AssetGenImage extends AssetImage {
-  const AssetGenImage(String assetName) : super(assetName$packageParameter);
+  const AssetGenImage(String assetName) : super(assetName$packageSuperParameter);
 
   Image image({
     Key? key,
@@ -414,7 +417,6 @@ class AssetGenImage extends AssetImage {
     bool matchTextDirection = false,
     bool gaplessPlayback = false,
     bool isAntiAlias = false,
-    String? package$packageParameter,
     FilterQuality filterQuality = FilterQuality.low,
     int? cacheWidth,
     int? cacheHeight,
