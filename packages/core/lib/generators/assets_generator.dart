@@ -388,9 +388,8 @@ String _assetGenImageClassDefinition(String packageName) {
   final packageSuperParameter =
       packageName.isNotEmpty ? ", package: '$packageName'" : '';
 
-  final keyName = packageName.isEmpty
-      ? '_assetName'
-      : "'packages/$packageName/\$_assetName'";
+  final keyName =
+      packageName.isEmpty ? 'assetName' : "'packages/$packageName/\$assetName'";
 
   return '''
 
