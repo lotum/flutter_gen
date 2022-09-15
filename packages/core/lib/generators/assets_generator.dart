@@ -154,12 +154,12 @@ AssetType _constructAssetTree(List<String> assetRelativePathList) {
 }
 
 _Statement? _createAssetTypeStatement(
-  String rootPath,
+  AssetsGenConfig config,
   AssetType assetType,
   List<Integration> integrations,
   String name,
 ) {
-  final childAssetAbsolutePath = join(rootPath, assetType.path);
+  final childAssetAbsolutePath = join(config.rootPath, assetType.path);
   if (assetType.isSupportedImage) {
     return _Statement(
       type: 'AssetGenImage',
@@ -183,12 +183,18 @@ _Statement? _createAssetTypeStatement(
     final integration = integrations.firstWhereOrNull(
       (element) => element.isSupport(assetType),
     );
+
+    final packageLiteral = config.packageParameterLiteral;
+    final assetPath = packageLiteral.isNotEmpty
+        ? 'packages/$packageLiteral/${assetType.path}'
+        : assetType.path;
+
     if (integration == null) {
       return _Statement(
         type: 'String',
         filePath: assetType.path,
         name: name,
-        value: '\'${posixStyle(assetType.path)}\'',
+        value: '\'${posixStyle(assetPath)}\'',
         isConstConstructor: false,
         needDartDoc: true,
       );
@@ -198,7 +204,7 @@ _Statement? _createAssetTypeStatement(
         type: integration.className,
         filePath: assetType.path,
         name: name,
-        value: integration.classInstantiate(posixStyle(assetType.path)),
+        value: integration.classInstantiate(posixStyle(assetPath)),
         isConstConstructor: integration.isConstConstructor,
         needDartDoc: true,
       );
@@ -233,7 +239,7 @@ String _dotDelimiterStyleDefinition(
           .mapToIsUniqueWithoutExtension()
           .map(
             (e) => _createAssetTypeStatement(
-              config.rootPath,
+              config,
               e.assetType,
               integrations,
               (e.isUniqueWithoutExtension
@@ -320,7 +326,7 @@ String _flatStyleDefinition(
       .mapToIsUniqueWithoutExtension()
       .map(
         (e) => _createAssetTypeStatement(
-          config.rootPath,
+          config,
           e.assetType,
           integrations,
           createName(e),
