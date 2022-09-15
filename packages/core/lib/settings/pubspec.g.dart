@@ -74,8 +74,7 @@ FlutterGen _$FlutterGenFromJson(Map json) => $checkedCreate(
             'assets',
             'fonts',
             'integrations',
-            'colors',
-            'exclude'
+            'colors'
           ],
         );
         final val = FlutterGen(
@@ -89,8 +88,6 @@ FlutterGen _$FlutterGenFromJson(Map json) => $checkedCreate(
               'integrations', (v) => FlutterGenIntegrations.fromJson(v as Map)),
           colors: $checkedConvert(
               'colors', (v) => FlutterGenColors.fromJson(v as Map)),
-          exclude: $checkedConvert('exclude',
-              (v) => (v as List<dynamic>).map((e) => e as String).toList()),
         );
         return val;
       },
